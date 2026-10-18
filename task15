@@ -1,0 +1,27 @@
+function howManyTimes(time1, time2) {
+  const parse = (str) => {
+    const [date, time] = str.split(' ');
+    const [y, m, d] = date.split('-').map(Number);
+    const [hr, min, sec] = time.split(':').map(Number);
+    return Date.UTC(y, m - 1, d, hr, min, sec) / 1000;
+  };
+
+  const t1 = parse(time1);
+  const t2 = parse(time2);
+  let totalStrikes = 0;
+
+  for (let t = Math.floor(t1 / 1800) * 1800; t < t2; t += 1800) {
+    const date = new Date(t * 1000);
+    const min = date.getUTCMinutes();
+
+    if (min === 0) {
+      const hr = date.getUTCHours();
+      const strikesCount = hr % 12 === 0 ? 12 : hr % 12;
+      totalStrikes += Math.max(0, Math.min(t2, t + strikesCount) - Math.max(t1, t));
+    } else if (min === 30) {
+      totalStrikes += Math.max(0, Math.min(t2, t + 1) - Math.max(t1, t));
+    }
+  }
+
+  return totalStrikes;
+}
