@@ -1,0 +1,5 @@
+function longest(arr, n) {
+  const withIndex = arr.map((str, idx) => ({ str, idx }));
+  withIndex.sort((a, b) => b.str.length - a.str.length || a.idx - b.idx);
+  return withIndex[n - 1].str;
+}
