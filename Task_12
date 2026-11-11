@@ -1,0 +1,5 @@
+function longest(arr, n) {
+let a = arr.slice(); 
+  a.sort((x,y) => (y.length - x.length) || (arr.indexOf(x)-arr.indexOf(y)));
+  return a[n-1];
+}
