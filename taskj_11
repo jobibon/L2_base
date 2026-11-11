@@ -1,0 +1,7 @@
+function domainName(url){
+  let s = url;
+  s = s.replace("http://", "");
+  s = s.replace("https://", "");
+  s = s.replace("www.", "");
+  return s.split(".")[0];
+}
