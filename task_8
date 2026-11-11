@@ -1,0 +1,13 @@
+function expandedForm(num) {
+  let s = String(num);
+  let res = [];
+  for(let i = 0; i<s.length; i++)
+    {
+      if(s[i]!=="0")
+        {
+        let step = s.length - i - 1;
+        res.push(s[i]*Math.pow(10, step));
+        }
+    }
+  return res.join(" + ")
+}
