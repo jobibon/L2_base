@@ -1,0 +1,17 @@
+function bingo(ticket, win){
+let count = 0;
+  for(let t of ticket )
+    {
+      let s = t[0];
+      let n = t[1];
+      for(let i=0; i <s.length;i++)
+        {
+          if(s.charCodeAt(i)===n)
+            {
+              count++;
+              break;
+            }
+        }
+    }
+  return count >= win ? "Winner!" : "Loser!";
+}
